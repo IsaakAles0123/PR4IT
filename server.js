@@ -68,6 +68,7 @@ function layout({ current, heading, subheading, source, body }) {
     ["/schedule", "Расписание"],
     ["/people", "Люди"],
     ["/budget", "Бюджет"],
+    ["/board", "Доска"],
   ];
   const menu = links
     .map(([href, label]) => {
@@ -397,6 +398,20 @@ async function start() {
         const css = fs.readFileSync(path.join(__dirname, "public", "style.css"));
         response.writeHead(200, { "Content-Type": "text/css; charset=utf-8" });
         response.end(css);
+        return;
+      }
+
+      if (request.method === "GET" && pathname === "/board.js") {
+        const script = fs.readFileSync(path.join(__dirname, "public", "board.js"));
+        response.writeHead(200, { "Content-Type": "text/javascript; charset=utf-8" });
+        response.end(script);
+        return;
+      }
+
+      if (request.method === "GET" && pathname === "/board") {
+        const page = fs.readFileSync(path.join(__dirname, "public", "board.html"));
+        response.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        response.end(page);
         return;
       }
 

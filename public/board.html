@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доска мастерской</title>
+    <link rel="stylesheet" href="/style.css?v=3">
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="contacts">Дом творчества · 8 800 250-19-04</p>
+      <nav class="menu">
+        <a href="/">Кружки</a>
+        <a href="/schedule">Расписание</a>
+        <a href="/people">Люди</a>
+        <a href="/budget">Бюджет</a>
+        <a class="is-current" href="/board">Доска</a>
+      </nav>
+      <h1>Доска мастерской</h1>
+      <h2>Планирование подготовки кружков, закупок материалов и семейных суббот</h2>
+    </header>
+
+    <main class="board-page">
+      <section class="panel board-toolbar">
+        <div class="board-controls">
+          <form id="task-form">
+            <h3>Новая задача</h3>
+            <label>
+              Название
+              <input name="title" maxlength="120" required>
+            </label>
+            <label>
+              Пояснение
+              <input name="details" maxlength="300">
+            </label>
+            <label>
+              Колонка
+              <select name="status">
+                <option value="idea">Задумано</option>
+                <option value="doing">В работе</option>
+                <option value="review">На проверке</option>
+                <option value="done">Сделано</option>
+              </select>
+            </label>
+            <button type="submit">Добавить задачу</button>
+          </form>
+
+          <form id="filter-form">
+            <h3>Фильтр и сортировка</h3>
+            <label>
+              Поиск
+              <input id="search" type="search" placeholder="Название или пояснение">
+            </label>
+            <label>
+              Порядок
+              <select id="sort">
+                <option value="new">Сначала новые</option>
+                <option value="old">Сначала старые</option>
+                <option value="title">По названию</option>
+              </select>
+            </label>
+          </form>
+        </div>
+        <p class="task-counter" id="counter">Всего задач: 0</p>
+      </section>
+
+      <div class="messages" id="messages" role="status" aria-live="polite">
+        Здесь появятся сообщения о действиях с задачами.
+      </div>
+
+      <section class="board" id="board" aria-label="Колонки статусов"></section>
+    </main>
+
+    <script src="/board.js"></script>
+  </body>
+</html>
